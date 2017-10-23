@@ -1,3 +1,7 @@
+<h3>Edit your profile</h3>
+
+<%= form_for @user do |form| %>
+
 <div class="text-field">
   <%= form.label :first_name %>
   <%= form.text_field :first_name, type: 'text' %>
@@ -13,7 +17,9 @@
   <%= form.text_field :email, type: 'email' %>
 </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+<div class="submit-field">
+	<%= form.submit "Update Details" %>
 </div>
+
+<% end %>
+
