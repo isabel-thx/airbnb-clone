@@ -1,24 +1,18 @@
-class UsersController < Clearance::UsersController
+class UsersController < ApplicationController
 
-	def new
-    @user = User.new
-    render template: "users/new"
+  def edit
+    @user = User.find(params[:id])  #(params.require(:user).permit(:id))
+    # automatically renders template: "users/edit" (controller/action)
   end
 
-	def create
-    @user = User.new(user_params)
-
-    if @user.save
-      sign_in @user
-      redirect_back_or url_after_create
-    else
-      render template: "users/new"
-    end
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
   end
 
   private
- 	def user_params
-  	params.require(:user).permit(:first_name, :last_name, :email, :password)
- 	end
- 
- end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email)
+  end
+
+end

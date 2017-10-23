@@ -34,6 +34,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'clearance'
 # Use Figaro to hide sensitive information
 gem 'figaro'
+#Use Omniauth for Facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
