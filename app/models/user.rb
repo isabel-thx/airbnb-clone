@@ -2,6 +2,11 @@ class User < ApplicationRecord
   include Clearance::User
 
   has_many :authentications, dependent: :destroy
+  has_many :listings, dependent: :destroy
+
+  # def listings
+  #   return Listing.where(user_id: self.id)
+  # end
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
 

@@ -1,1 +1,13 @@
-<h1>HELLO!</h1>
+<br>
+<h1>Airbnb</h1>
+<h3>Book unique homes and experience a city like a local.</h3>
+
+<br>
+Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
+
+<br><br><br>
+
+<%= link_to "FOR YOU", "/" %> |
+<%= link_to "HOMES", "/listings" %> |
+<%= link_to "EXPERIENCES", "/" %> |
+<%= link_to "RESTAURANTS", "/" %> |

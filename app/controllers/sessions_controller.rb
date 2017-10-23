@@ -9,7 +9,7 @@ class SessionsController < Clearance::SessionsController
       if authentication.user
         user = authentication.user
         authentication.update_token(auth_hash)
-        @next = root_url
+        @next = home_path
         @notice = "Signed in!"
       # else: user logs in with OAuth for the first time
       else

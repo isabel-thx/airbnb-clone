@@ -5,22 +5,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> <!-- was overridden by clearance 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 					but changed back -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
   <div id="header">
     <% if signed_in? -%>
     <div class= "nav-bar">
-      <%= link_to "Home", "/" %>
-      <%= link_to "My profile", "/" %>
-      <%= link_to "Listings", "/" %>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+      <%= link_to "[A]", "/" %>
+      <%= link_to "My profile", user_path(current_user) %>
+      <%= link_to "My Listings", user_listings_path(current_user) %>
+      <%= link_to "New Listing", new_listing_path %>
+      <%= link_to t(".sign_out"), sign_out_path, :method => :delete %>
     </div>
     <% else -%>
       <%= link_to t(".sign_in"), sign_in_path %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+      <%#= link_to "Sign in with Facebook", "/auth/facebook" %>
+        <% if Clearance.configuration.allow_sign_up? %>
+          <%= link_to t(".sign_up"), sign_up_path %>
+        <% end %>
+
     <% end -%>
   </div>
 
