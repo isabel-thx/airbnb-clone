@@ -20,7 +20,8 @@ class Clearance::UsersController < Clearance::BaseController
 
     if @user.save
       sign_in @user
-      redirect_back_or url_after_create
+      # redirect_back_or url_after_create
+      redirect_back_or user_path(@user)
     else
       render template: "users/new"
     end

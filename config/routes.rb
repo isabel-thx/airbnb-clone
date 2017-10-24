@@ -3,9 +3,27 @@ Rails.application.routes.draw do
   root 'hello#index'
 
   #resources
-  resources :users, only: [:show, :edit, :update]
+
+  # same as
+  #get '/listings/:id/verify' => 'listings#verify', as: :verify_listing
+  
+  resources :listings
+
+  resources :listings do
+    member do
+      get 'verify'
+    end
+  end
+
   
 
+  resources :users, only: [:show, :edit, :update] do
+    resources :listings, only: [:show, :index]
+  end
+
+  # <%= link_to "this particular listing under particular user", user_listing_path(current_user, @listing)
+  
+  get "/homepage" => "hello#index", as: "home"
   
   #facebook authentication
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"

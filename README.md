@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+<div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :listing_user_id %>
+  </div>
