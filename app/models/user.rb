@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy
 
+  enum role: [ :customer, :moderator, :super_admin ]
+
   # def listings
   #   return Listing.where(user_id: self.id)
   # end

@@ -19,6 +19,31 @@
   </div>
 
   <div class="field">
+    <%= form.label :street_address %>
+    <%= form.text_field :street_address, id: :listing_street_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %>
+    <%= form.number_field :zipcode, id: :listing_zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :listing_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state, id: :listing_state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, id: :listing_country %>
+  </div>
+
+  <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :listing_description %>
   </div>
@@ -29,13 +54,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :num_of_rooms %>
+    <%= form.label :number_of_rooms %>
     <%= form.number_field :num_of_rooms, id: :listing_num_of_rooms %>
   </div>
 
   <div class="field">
-    <%= form.label :num_of_bathrooms %>
+    <%= form.label :number_of_bathrooms %>
     <%= form.number_field :num_of_bathrooms, id: :listing_num_of_bathrooms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_number_of_guests %>
+    <%= form.number_field :max_num_of_guests, id: :listing_max_num_of_guests %>
   </div>
 
   <div class="field">

@@ -37,6 +37,10 @@ gem 'figaro'
 #Use Omniauth for Facebook login
 gem 'omniauth'
 gem 'omniauth-facebook'
+#Use Faker to seed data
+gem 'faker'
+#Use will_paginate for pagination
+gem 'will_paginate', '3.1.0'
 
 
 # Use Capistrano for deployment

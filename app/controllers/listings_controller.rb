@@ -1,15 +1,17 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :verify]
   before_action :require_login, only: [:new, :edit, :update, :destroy]
-
+  before_action :allowed?, only: [:verify]
+  
   # GET /listings
   # GET /listings.json
   def index
-    # byebug
     if params[:user_id] 
-      @listings = User.find(params[:user_id]).listings 
+      @listings = User.find(params[:user_id]).listings.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      render 'mylistings'
     else
-      @listings = Listing.all
+      @listings = Listing.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     end
   end
 
@@ -20,7 +22,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = Listing.new   
   end
 
   # GET /listings/1/edit
@@ -67,6 +69,18 @@ class ListingsController < ApplicationController
     end
   end
 
+  def verify
+    if current_user.customer?
+      flash[:notice] = "Sorry. You do not have the permission to verify a property."
+      redirect_to "/"
+    else
+      @listing.update(verification: true)
+      flash[:notice] = "This property has been verified."
+      redirect_to "/"
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -75,6 +89,11 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :price, :house_rules)
+      params.require(:listing).permit(:title, :street_address, :zipcode, :city, :state, :country, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :max_num_of_guests, :price, :house_rules)
     end
+
+
+    def allowed?
+      return !current_user.customer?
+    end     
 end

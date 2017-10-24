@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Address:</strong>
+  <%= @listing.street_address %>, <%= @listing.city %> <%= @listing.zipcode %> <%= @listing.state %>, <%= @listing.country %> %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @listing.description %>
 </p>
@@ -28,6 +33,11 @@
 <p>
   <strong>Number of bathrooms:</strong>
   <%= @listing.num_of_bathrooms %>
+</p>
+
+<p>
+  <strong>Maximum number of guests:</strong>
+  <%= @listing.max_num_of_guests %>
 </p>
 
 <p>

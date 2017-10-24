@@ -1,0 +1,52 @@
+
+<table class = "table">
+  <thead>
+    <tr>
+      <!-- <th>id</th> -->
+      <th>Property</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Property type</th>
+      <th>Num of rooms</th>
+      <th>Num of bathrooms</th>
+      <th>Max num of guests</th>
+      <th>Price</th>
+      <th>House rules</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @listings.each do |listing| %>
+      <tr>
+        <!-- <td><%#= listing.id %></td> -->
+        <td><%= listing.title %></td>
+        <td><%= listing.street_address %>, <%= listing.city %> <%= listing.zipcode %> <%= listing.state %>, <%= listing.country %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.property_type %></td>
+        <td><%= listing.num_of_rooms %></td>
+        <td><%= listing.num_of_bathrooms %></td>
+        <td><%= listing.max_num_of_guests %></td>
+        <td><%= listing.price %></td>
+        <td><%= listing.house_rules %></td>
+        <td><%= link_to 'Show', listing %></td>
+        
+        <% if signed_in? %>
+          <% if listing.user == current_user %>
+            <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+            <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        
+          <% if current_user.super_admin? || current_user.moderator? %>
+            <td><%= link_to 'Verify', verify_listing_path(listing) %></td>
+          <% end %>
+        <% end %>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h4 style="color: grey"><%= will_paginate @listings%></h4>

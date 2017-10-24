@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023061811) do
+ActiveRecord::Schema.define(version: 20171024061014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,15 +27,22 @@ ActiveRecord::Schema.define(version: 20171023061811) do
 
   create_table "listings", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "title"
-    t.text "description"
-    t.string "property_type"
-    t.integer "num_of_rooms"
-    t.integer "num_of_bathrooms"
-    t.integer "price"
-    t.text "house_rules"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.string "property_type", null: false
+    t.integer "num_of_rooms", null: false
+    t.integer "num_of_bathrooms", null: false
+    t.integer "price", null: false
+    t.text "house_rules", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "street_address", null: false
+    t.integer "zipcode", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "country", null: false
+    t.integer "max_num_of_guests", null: false
+    t.boolean "verification", default: false
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -48,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171023061811) do
     t.string "remember_token", limit: 128, null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

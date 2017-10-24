@@ -2,8 +2,10 @@
 <h1>Airbnb</h1>
 <h3>Book unique homes and experience a city like a local.</h3>
 
+<% if signed_in? %>
 <br>
 Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
+<% end %>
 
 <br><br><br>
 
@@ -11,3 +13,5 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 <%= link_to "HOMES", "/listings" %> |
 <%= link_to "EXPERIENCES", "/" %> |
 <%= link_to "RESTAURANTS", "/" %> |
+
+<%= render 'listings/listings' %>
