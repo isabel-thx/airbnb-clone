@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 <br>
 
-<body>
 
+<% if @listing.photos.length > 0 %>
 <div class="container">
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
 <!-- <ol class="carousel-indicators">
@@ -37,8 +36,8 @@
     </a>
   </div>
 </div>
+<% end %>
 
-</body>
 
 <!-- <#% @listing.photos.each do |p| %>
 <#%= image_tag p.url %> -->

@@ -38,7 +38,7 @@
             <td><%= link_to 'Verify', verify_listing_path(listing) %></td>
           <% end %>
 
-          <% if listing.user == current_user %>
+          <% if listing.user == current_user && current_user.customer? %>
             <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
             <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
@@ -51,4 +51,4 @@
 </table>
 
 
-<h5 style="color: grey"><%= will_paginate @listings%></h5>
+<h5 style="color: black"><%= will_paginate @listings%></h5>
