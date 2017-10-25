@@ -33,14 +33,16 @@
         <td><%= link_to 'Show', listing %></td>
         
         <% if signed_in? %>
+
+          <% if current_user.super_admin? || current_user.moderator? %>
+            <td><%= link_to 'Verify', verify_listing_path(listing) %></td>
+          <% end %>
+
           <% if listing.user == current_user %>
             <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
             <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
-        
-          <% if current_user.super_admin? || current_user.moderator? %>
-            <td><%= link_to 'Verify', verify_listing_path(listing) %></td>
-          <% end %>
+            
         <% end %>
       
       </tr>
@@ -49,4 +51,4 @@
 </table>
 
 
-<h4 style="color: grey"><%= will_paginate @listings%></h4>
+<h5 style="color: grey"><%= will_paginate @listings%></h5>

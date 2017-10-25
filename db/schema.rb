@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024061014) do
+ActiveRecord::Schema.define(version: 20171024084935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20171024061014) do
     t.string "country", null: false
     t.integer "max_num_of_guests", null: false
     t.boolean "verification", default: false
+    t.json "photos"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 

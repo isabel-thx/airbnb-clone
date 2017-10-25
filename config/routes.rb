@@ -4,16 +4,13 @@ Rails.application.routes.draw do
 
   #resources
 
-  # same as
-  #get '/listings/:id/verify' => 'listings#verify', as: :verify_listing
-  
-  resources :listings
-
   resources :listings do
     member do
       get 'verify'
     end
   end
+  # same as
+  # get '/listings/:id/verify' => 'listings#verify', as: :verify_listing
 
   
 

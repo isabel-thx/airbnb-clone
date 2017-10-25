@@ -41,6 +41,9 @@ gem 'omniauth-facebook'
 gem 'faker'
 #Use will_paginate for pagination
 gem 'will_paginate', '3.1.0'
+#Use Carrierwave for image uploading
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 
 # Use Capistrano for deployment
