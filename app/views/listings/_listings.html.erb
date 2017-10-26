@@ -34,7 +34,7 @@
         
         <% if signed_in? %>
 
-          <% if current_user.super_admin? || current_user.moderator? %>
+          <% if current_user.super_admin? || current_user.moderator? && listing.verification == false %>
             <td><%= link_to 'Verify', verify_listing_path(listing) %></td>
           <% end %>
 

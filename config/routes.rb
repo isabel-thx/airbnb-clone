@@ -4,6 +4,19 @@ Rails.application.routes.draw do
 
   #resources
 
+  
+
+
+  resource :reservations, only: [:show]
+
+  resources :users, only: [:show, :edit, :update, :index] do
+    resources :listings, only: [:show, :index]
+  end
+
+  # <%= link_to "this particular listing under particular user", user_listing_path(current_user, @listing)
+  get "/homepage" => "hello#index", as: "home"
+
+  # verify listing
   resources :listings do
     member do
       get 'verify'
@@ -12,15 +25,16 @@ Rails.application.routes.draw do
   # same as
   # get '/listings/:id/verify' => 'listings#verify', as: :verify_listing
 
-  
+  #change user role
+  post '/users/:id/upgrade', to: "users#upgrade", as: "upgrade"
 
-  resources :users, only: [:show, :edit, :update] do
-    resources :listings, only: [:show, :index]
-  end
+  # book listing
+  get '/listings/:id/book' => 'listings#book', as: :book_listing
 
-  # <%= link_to "this particular listing under particular user", user_listing_path(current_user, @listing)
-  
-  get "/homepage" => "hello#index", as: "home"
+
+
+
+
   
   #facebook authentication
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"

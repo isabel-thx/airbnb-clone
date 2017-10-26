@@ -80,7 +80,20 @@ class ListingsController < ApplicationController
       flash[:notice] = "This property has been verified."
       redirect_to "/"
     end
+  end
 
+  def book
+    @reservation = current_user.reservations.new(reservation_params)
+
+    respond_to do |format|
+      if @reservation.save
+        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.json { render :show, status: :created, location: @reservation }
+      else
+        format.html { render :new }
+        format.json { render json: @reservation.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
@@ -94,6 +107,9 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:title, :street_address, :zipcode, :city, :state, :country, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :max_num_of_guests, :price, :house_rules, photos: [])
     end
 
+    def reservation_params
+      params.require(:reservation).permit(:start_date, :end_date, :num_of_guests)
+    end
 
     def allowed?
       return !current_user.customer?

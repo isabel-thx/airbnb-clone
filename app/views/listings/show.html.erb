@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 <br>
 
-
 <% if @listing.photos.length > 0 %>
 <div class="container">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -38,14 +37,18 @@
 </div>
 <% end %>
 
+<br><br>
+<div>
+<% if @listing.verification == true %>
+This is a verified property!
+<% end %>
+</div>
 
-<!-- <#% @listing.photos.each do |p| %>
-<#%= image_tag p.url %> -->
 <br><br>
 
 <p>
   <strong>Owner:</strong>
-  <%= @listing.user.first_name + " " + @listing.user.last_name%>
+  <%= link_to "#{@listing.user.first_name} #{@listing.user.last_name}", user_path(@listing.user) %>
 </p>
 
 <p>
@@ -93,6 +96,31 @@
   <%= @listing.house_rules %>
 </p>
 
+<% if @listing.user != current_user %>
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
+
+<button><%= link_to 'BOOK NOW', book_listing_path(@listing) %></button>
+<% end %>
+
+<br><br>
 <% if @listing.user == current_user %>
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <% end %>
