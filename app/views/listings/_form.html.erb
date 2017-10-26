@@ -74,6 +74,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :photos %>
+    <%= form.file_field :photos, multiple: true %>
+  </div>
+
+  <div class="field">
     <%= form.label :house_rules %>
     <%= form.text_area :house_rules, id: :listing_house_rules %>
   </div>

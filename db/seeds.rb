@@ -26,9 +26,11 @@ ActiveRecord::Base.transaction do
   end
 end
 
-User.create(first_name: "Isabel", last_name: "Teh", email: "a@a.com", password: "123456", role: 2)
+User.create(first_name: "Isabel", last_name: "Teh", email: "a@a.com", password: "123456", role: 0)
+User.create(first_name: "Isabel", last_name: "Teh", email: "b@b.com", password: "123456", role: 1)
+User.create(first_name: "Isabel", last_name: "Teh", email: "c@c.com", password: "123456", role: 2)
 
-# Seed Listings
+# # Seed Listings
 listing = {}
 uids = []
 User.all.each { |u| uids << u.id }
@@ -53,7 +55,9 @@ ActiveRecord::Base.transaction do
 
 
     listing['user_id'] = uids.sample
-
-    Listing.create(listing)
+    puts "creating"
+    object = Listing.create!(listing)
+    object.remote_photos_urls = (rand(1..4).times.map { Faker::Placeholdit.image })
+    object.save
   end
 end

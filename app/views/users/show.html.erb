@@ -1,6 +1,13 @@
-<br>
-<h2>My Profile</h2>
-<br>
+<% if @user == current_user %>
+	<br>
+	<h2>My Profile</h2>
+	<br>
+<% else %>
+	<br>
+	<h2><%= @user.first_name + " " + @user.last_name %>'s Profile</h2>
+	<br>
+<% end %>
+
 
 	Name: <%= @user.first_name %>
 	<%= @user.last_name %>
@@ -8,8 +15,18 @@
 	Email: <%= @user.email %>
 	<br>
 
-	<br><br>
 
+	<% if @user == current_user %>
 	<div>
 		<%= link_to "Edit Profile", edit_user_path(current_user) %>
 	</div>
+	<% end %>
+
+<% if (current_user.super_admin? || current_user.moderator?) && @user.role == 0 %>
+    <td><%= link_to 'Make Admin', upgrade_path(@user), method: :post %></td>
+	<% end %>
+
+	<br>
+
+<h3>Listings</h3>
+<%= render 'listings/listings' %>

@@ -3,7 +3,9 @@ class User < ApplicationRecord
 
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 
+  # declare an enum attribute where the values map to integers in the database, but can be queried by name
   enum role: [ :customer, :moderator, :super_admin ]
 
   # def listings

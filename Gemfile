@@ -13,7 +13,10 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
+#Use bootstrap for styling
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
+gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -30,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
 # Use Clearance for user authentication
 gem 'clearance'
 # Use Figaro to hide sensitive information
@@ -41,7 +45,15 @@ gem 'omniauth-facebook'
 gem 'faker'
 #Use will_paginate for pagination
 gem 'will_paginate', '3.1.0'
-
+#Use Carrierwave for image uploading
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+#Use Fog for hosting images
+gem 'fog'
+gem 'fog-aws'
+#Use Moment for datetime picker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
