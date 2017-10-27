@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    if params[:user_id] 
+    if params[:user_id]
       @listings = User.find(params[:user_id]).listings.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
       render 'mylistings'
     else
@@ -64,9 +64,10 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
+    @user = current_user.id
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to user_listings_path(@user), notice: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -82,19 +83,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  def book
-    @reservation = current_user.reservations.new(reservation_params)
-
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render :show, status: :created, location: @reservation }
-      else
-        format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -104,14 +92,10 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :street_address, :zipcode, :city, :state, :country, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :max_num_of_guests, :price, :house_rules, photos: [])
-    end
-
-    def reservation_params
-      params.require(:reservation).permit(:start_date, :end_date, :num_of_guests)
+      params.require(:listing).permit(:title, :street_address, :zipcode, :city, :state, :country, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :max_num_of_guests, :price, :house_rules, :check_in_time, :check_out_time, photos: [])
     end
 
     def allowed?
       return !current_user.customer?
-    end     
+    end
 end

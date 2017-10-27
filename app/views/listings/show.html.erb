@@ -96,28 +96,18 @@ This is a verified property!
   <%= @listing.house_rules %>
 </p>
 
-<% if @listing.user != current_user %>
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
+<p>
+  <strong>Check-in time:</strong>
+  <%= @listing.check_in_time %>
+</p>
 
-<button><%= link_to 'BOOK NOW', book_listing_path(@listing) %></button>
+<p>
+  <strong>Check-out time:</strong>
+  <%= @listing.check_out_time %>
+</p>
+
+<% if @listing.user != current_user %>
+<button><%= link_to 'BOOK NOW', new_listing_reservation_path(@listing) %></button>
 <% end %>
 
 <br><br>

@@ -1,0 +1,51 @@
+
+<%= form_for @reservation, url: listing_reservations_path(@listing) do |form| %>
+<!-- same as form_for [@reservation, @listing] -->
+
+  <div class="field">
+    <%= form.label :number_of_guests %>:<br>
+    <%= form.number_field :num_of_guests, id: :reservation_guests %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_in_date %><%# form.field :start_date %>
+     <div class="container">
+      <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <%= form.text_field :start_date, class: 'form-control' %>
+                    <!-- <input type='text' class="form-control" /> -->
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out_date %><%# form.field :end_date %>
+     <div class="container">
+      <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker4'>
+                  <%= form.text_field :end_date, class: 'form-control' %>
+                    <!-- <input type='text' class="form-control" /> -->
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

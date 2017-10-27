@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<br>
+
+<h1>Your Trips</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <!-- <th>id</th> -->
+      <th>Property</th>
+      <th>Airbnb Owner</th>
+      <th>Check-in Date</th>
+      <th>Check-out Date</th>
+      <th>Num of Guests</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+<% @user_reservations.each do |r| %>
+      <tr>
+
+        <td><%= r.listing.title %></td>
+        <td><%= "#{r.listing.user.first_name} #{r.listing.user.last_name}" %></td><!-- , user_path(r.listing.user) -->
+        <td><%= r.start_date %></td>
+        <td><%= r.end_date %></td>
+        <td><%= r.num_of_guests %></td>
+        <!-- <td><%#= link_to "Show", user_reservation_path(@user, @reservation.id) %></td> -->
+        
+
+          <% if r.user == current_user && current_user.customer? %>
+          <td><%= link_to "Show Details", user_reservation_path(@user, r) %></td>
+            <!-- <td><%#= link_to 'Change Booking Details', edit_user_reservation_path(@user, r) %></td>
+            <td><%#= link_to 'Cancel Trip', user_reservation_path(@user, r), method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+          <% end %>
+            
+        <% end %>
+
+
+<br>
+
+  </tbody>
+</table>
+
+<h5 style="color: black"><%= will_paginate @user_reservations%></h5>

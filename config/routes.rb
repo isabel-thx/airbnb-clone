@@ -6,11 +6,9 @@ Rails.application.routes.draw do
 
   
 
-
-  resource :reservations, only: [:show]
-
   resources :users, only: [:show, :edit, :update, :index] do
     resources :listings, only: [:show, :index]
+    # resources :reservations
   end
 
   # <%= link_to "this particular listing under particular user", user_listing_path(current_user, @listing)
@@ -18,6 +16,7 @@ Rails.application.routes.draw do
 
   # verify listing
   resources :listings do
+    resources :reservations, except: [:edit, :update]
     member do
       get 'verify'
     end
@@ -25,13 +24,15 @@ Rails.application.routes.draw do
   # same as
   # get '/listings/:id/verify' => 'listings#verify', as: :verify_listing
 
-  #change user role
-  post '/users/:id/upgrade', to: "users#upgrade", as: "upgrade"
+  # change user role
+  post '/users/:id/upgrade' => "users#upgrade", as: "upgrade"
 
-  # book listing
-  get '/listings/:id/book' => 'listings#book', as: :book_listing
-
-
+  # user reservations
+  get '/users/:id/reservations' => "reservations#user_index", as: "user_reservations"
+  get '/users/:user_id/reservations/:id/edit' => "reservations#user_edit", as: "edit_user_reservation"
+  get '/users/:user_id/reservations/:id' => "reservations#user_show", as: "user_reservation"
+  patch '/users/:user_id/reservations/:id' => "reservations#user_update" #specify method!
+  delete '/users/:user_id/reservations/:id' => "reservations#user_destroy" #specify method!
 
 
 
