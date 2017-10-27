@@ -14,73 +14,83 @@
   
 
   <div class="field">
-    <%= form.label :property %>
+    <%= form.label :property %>:
     <%= form.text_field :title, id: :listing_title %>
   </div>
 
   <div class="field">
-    <%= form.label :street_address %>
+    <%= form.label :street_address %>:
     <%= form.text_field :street_address, id: :listing_street_address %>
   </div>
 
   <div class="field">
-    <%= form.label :zipcode %>
+    <%= form.label :zipcode %>:
     <%= form.number_field :zipcode, id: :listing_zipcode %>
   </div>
 
   <div class="field">
-    <%= form.label :city %>
+    <%= form.label :city %>:
     <%= form.text_field :city, id: :listing_city %>
   </div>
 
   <div class="field">
-    <%= form.label :state %>
+    <%= form.label :state %>:
     <%= form.text_field :state, id: :listing_state %>
   </div>
 
   <div class="field">
-    <%= form.label :country %>
+    <%= form.label :country %>:
     <%= form.text_field :country, id: :listing_country %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description %>:
     <%= form.text_area :description, id: :listing_description %>
   </div>
 
   <div class="field">
-    <%= form.label :property_type %>
+    <%= form.label :property_type %>:
     <%= form.text_field :property_type, id: :listing_property_type %>
   </div>
 
   <div class="field">
-    <%= form.label :number_of_rooms %>
+    <%= form.label :number_of_rooms %>:
     <%= form.number_field :num_of_rooms, id: :listing_num_of_rooms %>
   </div>
 
   <div class="field">
-    <%= form.label :number_of_bathrooms %>
+    <%= form.label :number_of_bathrooms %>:
     <%= form.number_field :num_of_bathrooms, id: :listing_num_of_bathrooms %>
   </div>
 
   <div class="field">
-    <%= form.label :max_number_of_guests %>
+    <%= form.label :max_number_of_guests %>:
     <%= form.number_field :max_num_of_guests, id: :listing_max_num_of_guests %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    RM<%= form.number_field :price, id: :listing_price %>/night
+    <%= form.label :price %>:
+    RM <%= form.number_field :price, id: :listing_price %> /night
   </div>
 
   <div class="field">
-    <%= form.label :photos %>
+    <%= form.label :photos %>:
     <%= form.file_field :photos, multiple: true %>
   </div>
 
   <div class="field">
-    <%= form.label :house_rules %>
+    <%= form.label :house_rules %>:
     <%= form.text_area :house_rules, id: :listing_house_rules %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_in_time %>:
+    <%= form.text_field :check_in_time, id: :listing_check_in_time %> P.M.
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out_time %>:
+    <%= form.text_field :check_out_time, id: :listing_check_out_time %> P.M.
   </div>
 
   <div class="actions">

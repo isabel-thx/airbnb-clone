@@ -52,6 +52,10 @@ ActiveRecord::Base.transaction do
     listing['state'] = Faker::Address.state
     listing['country'] = Faker::Address.country
     listing['max_num_of_guests'] = rand(1..10)
+    listing['check_in_time'] = "2p.m."
+    listing['check_out_time'] = "12p.m."
+
+
 
 
     listing['user_id'] = uids.sample
