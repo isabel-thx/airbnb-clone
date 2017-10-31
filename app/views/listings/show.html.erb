@@ -37,7 +37,7 @@
 </div>
 <% end %>
 
-<br><br>
+
 <div>
 <% if @listing.verification == true %>
 This is a verified property!
@@ -106,7 +106,7 @@ This is a verified property!
   <%= @listing.check_out_time %>
 </p>
 
-<% if @listing.user != current_user %>
+<% if @listing.user != current_user && current_user.customer? %>
 <button><%= link_to 'BOOK NOW', new_listing_reservation_path(@listing) %></button>
 <% end %>
 

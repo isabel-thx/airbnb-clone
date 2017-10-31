@@ -4,8 +4,10 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [ :show, :user_show, :user_edit, :user_update, :destroy, :user_destroy]
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
   
+  
   def new
   	@reservation = Reservation.new
+    @listing = Listing.find(params[:listing_id])
   end
 
   def create
@@ -15,7 +17,8 @@ class ReservationsController < ApplicationController
 
   	respond_to do |format|
       if @reservation.save
-        format.html { redirect_to listing_reservation_path(@listing, @reservation.id), notice: 'Reservation was successfully created.' }
+        format.html { redirect_to listing_reservation_path(@listing, @reservation), notice: 'Reservation was successfully created.' }
+        #listing_reservation_path(@listing, @reservation.id)
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
@@ -26,17 +29,18 @@ class ReservationsController < ApplicationController
 
   def show
     @user = current_user.id
-  	# @reservation = Reservation.find(params[:id])
+  	@reservation = Reservation.find(params[:id])
   end
 
   def user_show
   	@user = current_user.id
-    @listing = Listing.find(params[:id])
-  	# @reservation = Reservation.find(params[:id])
+  	@reservation = Reservation.find(params[:id])
+    @listing = @reservation.listing
   end
 
   def index
-  	@reservations = User.find(params[:id]).reservations.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+  	@listing_reservations = @listing.reservations.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+
   end
 
   def user_index

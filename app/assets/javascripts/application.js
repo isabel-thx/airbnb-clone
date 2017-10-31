@@ -21,11 +21,7 @@
 //= require bootstrap-datetimepicker
 
 
-
-
-
 // $(document).on('turbolinks:load', function () {
 
 //     $('#datetimepicker1 input').val('');
 // });
-

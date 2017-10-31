@@ -11,6 +11,7 @@
       <th>Airbnb Owner</th>
       <th>Check-in Date</th>
       <th>Check-out Date</th>
+      <th>Total Amount Paid</th>
       <th>Num of Guests</th>
       <th colspan="3"></th>
     </tr>
@@ -25,10 +26,14 @@
         <td><%= "#{r.listing.user.first_name} #{r.listing.user.last_name}" %></td><!-- , user_path(r.listing.user) -->
         <td><%= r.start_date %></td>
         <td><%= r.end_date %></td>
+
+        <% if r.paid == true %>
+          <td>RM<%= r.total_amount %></td>
+        <% else %>
+          <td>RM0</td>
+        <% end %>
         <td><%= r.num_of_guests %></td>
         <!-- <td><%#= link_to "Show", user_reservation_path(@user, @reservation.id) %></td> -->
-        
-
           <% if r.user == current_user && current_user.customer? %>
           <td><%= link_to "Show Details", user_reservation_path(@user, r) %></td>
             <!-- <td><%#= link_to 'Change Booking Details', edit_user_reservation_path(@user, r) %></td>
