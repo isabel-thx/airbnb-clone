@@ -57,7 +57,6 @@ ActiveRecord::Base.transaction do
 
 
 
-
     listing['user_id'] = uids.sample
     puts "creating"
     object = Listing.create!(listing)

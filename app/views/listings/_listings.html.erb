@@ -28,11 +28,15 @@
         <td><%= listing.num_of_rooms %></td>
         <td><%= listing.num_of_bathrooms %></td>
         <td><%= listing.max_num_of_guests %></td>
-        <td><%= listing.price %></td>
+        <td>RM<%= listing.price %></td>
         <td><%= listing.house_rules %></td>
         <td><%= link_to 'Show', listing %></td>
         
         <% if signed_in? %>
+
+          <% if current_user.super_admin? || current_user.moderator? %>
+            <td><%= link_to 'Reservations', listing_reservations_path(listing) %></td>
+          <% end %>
 
           <% if current_user.super_admin? || current_user.moderator? && listing.verification == false %>
             <td><%= link_to 'Verify', verify_listing_path(listing) %></td>

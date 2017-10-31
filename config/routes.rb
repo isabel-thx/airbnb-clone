@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
+
   root 'hello#index'
 
   #resources
-
-  
 
   resources :users, only: [:show, :edit, :update, :index] do
     resources :listings, only: [:show, :index]
@@ -31,9 +30,13 @@ Rails.application.routes.draw do
   get '/users/:id/reservations' => "reservations#user_index", as: "user_reservations"
   get '/users/:user_id/reservations/:id/edit' => "reservations#user_edit", as: "edit_user_reservation"
   get '/users/:user_id/reservations/:id' => "reservations#user_show", as: "user_reservation"
-  patch '/users/:user_id/reservations/:id' => "reservations#user_update" #specify method!
-  delete '/users/:user_id/reservations/:id' => "reservations#user_destroy" #specify method!
+  patch '/users/:user_id/reservations/:id' => "reservations#user_update"
+  delete '/users/:user_id/reservations/:id' => "reservations#user_destroy"
 
+  # make payment
+  get '/reservations/:id/checkout', to: "braintree#new", as:"braintree_new"
+  post '/reservations/:id/pay', to: 'braintree#create', as: "braintree_pay"
+  #post '/reservations/:id/payments' , to: "braintree#checkout", as: "braintree_checkout"
 
 
   

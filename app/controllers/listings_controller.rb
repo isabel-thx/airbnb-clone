@@ -4,7 +4,6 @@ class ListingsController < ApplicationController
   before_action :require_login, only: [:new, :edit, :update, :destroy]
   before_action :allowed?, only: [:verify]
 
-
   
   # GET /listings
   # GET /listings.json

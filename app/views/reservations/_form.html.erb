@@ -1,5 +1,6 @@
 
 <%= form_for @reservation, url: listing_reservations_path(@listing) do |form| %>
+<!-- listing_reservations_path(@listing) -->
 <!-- same as form_for [@reservation, @listing] -->
 
   <div class="field">
@@ -7,6 +8,7 @@
     <%= form.number_field :num_of_guests, id: :reservation_guests %>
   </div>
 
+  <div class="container">
   <div class="field">
     <%= form.label :check_in_date %><%# form.field :start_date %>
      <div class="container">
@@ -23,6 +25,16 @@
             </div>
         </div>
       </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                  format: 'DD/MM/YYYY'
+                });
+                var b = new Date();
+                b.setDate(b.getDate());
+                $('#datetimepicker3').data("DateTimePicker").minDate(b);
+            });
+        </script>
     </div>
   </div>
 
@@ -42,10 +54,36 @@
             </div>
         </div>        
       </div>
+      <script>
+        $(function () {
+                    $('#datetimepicker4').datetimepicker({
+                      format: 'DD/MM/YYYY',
+                      useCurrent: false 
+                    });
+                });
+      </script>
     </div>
   </div>
 
+  <script type="text/javascript">
+    $(function () {
+        // $('#datetimepicker1').datetimepicker();
+        // $('#datetimepicker2').datetimepicker({
+            
+        //     useCurrent: false //Important! See issue #1075
+        // });
+        $("#datetimepicker3").on("dp.change", function (e) {
+            $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker4").on("dp.change", function (e) {
+            $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+  </script>
+</div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Book These Dates" %>
   </div>
 <% end %>
+
