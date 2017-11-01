@@ -15,12 +15,18 @@ class ReservationsController < ApplicationController
   	@reservation.user_id = current_user.id
   	@reservation.listing_id = @listing.id
 
+    @host = "isabelthx94@gmail.com" #@listing.user.email
+    #@guest = @reservation.user
+
   	respond_to do |format|
       if @reservation.save
+        #ReservationMailer.booking_email(current_user.email, @host).deliver_later
+        ReservationJob.perform_later(current_user.email, @host)
         format.html { redirect_to listing_reservation_path(@listing, @reservation), notice: 'Reservation was successfully created.' }
         #listing_reservation_path(@listing, @reservation.id)
         format.json { render :show, status: :created, location: @reservation }
       else
+        flash[:danger] = @reservation.errors.full_messages.join(", ")
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
