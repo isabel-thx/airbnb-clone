@@ -1,6 +1,6 @@
 <br>
-<h3>Your Booking Details</h3>
-<br>
+<h2>Your Booking Details</h2>
+<br><br>
 
 <p>
   <strong>Airbnb Owner:</strong>
@@ -26,8 +26,9 @@
 
 <% if @reservation.paid == false %>
 <%= link_to 'PAY NOW TO SECURE YOUR BOOKING', braintree_new_path(@reservation) %>
-<% end %>
+
 <br><br>
 
 <%= link_to 'Change Booking Details', edit_user_reservation_path(@user, @reservation) %> |
+<% end %>
 <%= link_to 'Cancel Trip', user_reservation_path(@user, @reservation), method: :delete, data: { confirm: 'Are you sure?' } %>
