@@ -57,6 +57,14 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 # Use braintree for payment
 gem "braintree"
 #, "~> 2.78.0"
+# Active Job's default behavior is to execute jobs via the :async adapter.
+# So, you can use deliver_later now to send emails asynchronously.
+# Active Job's default adapter runs jobs with an in-process thread pool.
+# It's well-suited for the development/test environments, since it doesn't require any external infrastructure,
+# but it's a poor fit for production since it drops pending jobs on restart.
+# If you need a persistent backend,
+# you will need to use an Active Job adapter that has a persistent backend (Sidekiq, Resque, etc).
+gem 'sidekiq'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

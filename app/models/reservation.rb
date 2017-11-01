@@ -4,7 +4,7 @@ class Reservation < ApplicationRecord
   
   validates :start_date, presence: true
   validates :end_date, presence: true
-
+  validates :num_of_guests, presence: true, numericality: { greater_than: 0, only_integer: true }
   validate :check_overlapping_dates, on: :create
   # without S for custom validation
 
@@ -12,7 +12,7 @@ class Reservation < ApplicationRecord
   def check_overlapping_dates
     listing.reservations.each do |prev_booking|
       if overlap?(self, prev_booking)
-        return errors.add(:overlapping_dates, "The booking dates conflict with an existing booking")
+        self.errors.add(:overlapping_dates, "The booking dates conflict with an existing booking")
       end
     end
   end
