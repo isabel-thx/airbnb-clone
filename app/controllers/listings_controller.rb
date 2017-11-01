@@ -9,10 +9,10 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     if params[:user_id]
-      @listings = User.find(params[:user_id]).listings.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @listings = User.find(params[:user_id]).listings.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
       render 'mylistings'
     else
-      @listings = Listing.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      @listings = Listing.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
     end
   end
 

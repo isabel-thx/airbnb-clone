@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<br>
+
 
 <% if @listing.photos.length > 0 %>
 <div class="container">
@@ -106,12 +106,30 @@ This is a verified property!
   <%= @listing.check_out_time %>
 </p>
 
+
 <% if @listing.user != current_user && current_user.customer? %>
-<button><%= link_to 'BOOK NOW', new_listing_reservation_path(@listing) %></button>
+<!-- <button><%#= link_to 'BOOK NOW', new_listing_reservation_path(@listing) %></button> -->
+<br>
+<a href="/listings/<%= @listing.id %>/reservations/new" class="btn btn-primary" role="button">BOOK NOW</a>
 <% end %>
 
 <br><br>
-<% if @listing.user == current_user %>
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
+
+
+<% if @listing.user == current_user || current_user.super_admin? || current_user.moderator? %>
+  <td><%= link_to 'Listing Reservations', listing_reservations_path(@listing) %></td> <br>
 <% end %>
+<br>
+
+<% if current_user.super_admin? || current_user.moderator? && @listing.verification == false %>
+  <td><%= link_to 'Verify', verify_listing_path(@listing) %></td> |
+<% end %>
+
+<% if @listing.user == current_user && current_user.customer? %>
+  <td><%= link_to 'Edit', edit_listing_path(@listing) %></td> |
+  <td><%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %> |</td>
+<% end %>
+
 <%= link_to 'Back', listings_path %>
+
+<br><br><br>

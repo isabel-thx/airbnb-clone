@@ -122,17 +122,17 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 					<% end %>
 
 
-<br><br><br>
 
+<br><br>
 
 <%= link_to "FOR YOU", "/" %> |
 <%= link_to "HOMES", "/listings" %> |
 <%= link_to "EXPERIENCES", "/" %> |
-<%= link_to "RESTAURANTS", "/" %> |
+<%= link_to "RESTAURANTS", "/" %> 
 
-
+<br><br><br>
 <% if @listings.present? %>
-  <%= render 'listings/listings' %>
+  <%= render 'listings/test' %>
 <% else %>
 	<br><br><br>
   <p>There are no listings found.</p>
