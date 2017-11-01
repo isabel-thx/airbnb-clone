@@ -10,17 +10,21 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 
 <br><br><br>
 
+
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
 <div class="search">
         <div class="container">
           <div class="row">
             <div class="col-md-12"> <!-- col-md-offset-1 -->
               <div class="form-section">
 <!--                 <div class="row"> -->
-                    <form role="form">
+                    <!-- <form role="form"> -->
                       <div class="col-md-3">
                         <div class="form-group">
                           <!-- <label class="sr-only" for="location">Location</label> -->
-                          <input type="text" class="form-control" id="location" placeholder="Where">
+                          <!-- <input type="text" class="form-control" id="location" placeholder="Where" value='<%#= params[:location] %>'> -->
+
+                          <%= text_field_tag :location, params[:location], class: 'form-control', id: 'location', placeholder: 'Where' %>
                         </div>
                       </div>
                      
@@ -29,7 +33,7 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
         							<div class='col-md-3'>
 						            <div class="form-group">
 						              <div class='input-group date' id='datetimepicker1'>
-						                <input type='text' class="form-control" placeholder="Check In">
+						                <input type='text' class="form-control" placeholder="Check In" name="start_date">
 						                <span class="input-group-addon">
 						                  <span class="glyphicon glyphicon-calendar"></span>
 						                </span>
@@ -37,7 +41,7 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 						              <script type="text/javascript">
 				            				$(function () {
 				                		$('#datetimepicker1').datetimepicker({
-				                  	format: 'DD/MM/YYYY'
+				                  	format: 'YYYY-MM-DD'
 				                		});
 				                		var b = new Date();
 				                		b.setDate(b.getDate());
@@ -52,7 +56,7 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 							        <div class='col-md-3'>
 							          <div class="form-group">
 							            <div class='input-group date' id='datetimepicker2'>
-							              <input type='text' class="form-control" placeholder="Check Out">
+							              <input type='text' class="form-control" placeholder="Check Out" name="end_date">
 							                <span class="input-group-addon">
 							                  <span class="glyphicon glyphicon-calendar"></span>
 							                </span>
@@ -60,7 +64,7 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 							              <script>
         											$(function () {
                     					$('#datetimepicker2').datetimepicker({
-                      					format: 'DD/MM/YYYY',
+                      					format: 'YYYY-MM-DD',
                       					useCurrent: false 
                     						});
                 							});
@@ -87,8 +91,9 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 
 	                      <div class="col-md-2">
 	                        <div class="form-group">
-	                          <label class="sr-only" for="guest">Guest</label>
-	                          <select id="guest" name="guest" class="form-control">
+	                          <!-- <label class="sr-only" for="guest">Guest</label> -->
+
+	                          <select name='guest' class='form-control' id='guest'<% params[:guest] %>>
 	                              <option value="1">1 Guest</option>
 	                              <option value="2">2 Guests</option>
 	                              <option value="3">3 Guests</option>
@@ -107,13 +112,15 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 	                      <div class="col-md-1">
 	                        <button type="submit" class="btn btn-default btn-primary">Search</button>
 	                      </div>
-	                    </form>
+	                 <!--    </form> -->
 	                	</div>
 	              	</div>
 	            	</div>
 	          	</div>
 	        	</div>
 					</div>
+					<% end %>
+
 
 <br><br><br>
 
@@ -123,4 +130,12 @@ Welcome, <%= link_to "#{current_user.first_name}", user_path(current_user) %>!
 <%= link_to "EXPERIENCES", "/" %> |
 <%= link_to "RESTAURANTS", "/" %> |
 
-<%= render 'listings/listings' %>
+
+<% if @listings.present? %>
+  <%= render 'listings/listings' %>
+<% else %>
+	<br><br><br>
+  <p>There are no listings found.</p>
+<% end %>
+
+<%#= render 'listings/listings' %>
