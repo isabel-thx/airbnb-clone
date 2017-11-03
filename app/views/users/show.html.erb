@@ -17,16 +17,22 @@
 
 
 	<% if @user == current_user %>
-	<div>
-		<%= link_to "Edit Profile", edit_user_path(current_user) %>
-	</div>
+		<div>
+			<%= link_to "Edit Profile", edit_user_path(current_user) %>
+		</div>
+	<% end %>
+		
+		
+	<% if (current_user.super_admin? || current_user.moderator?) && @user.role == "customer" %>
+	    <%= link_to "Make Admin", upgrade_path(@user), method: :post %>
 	<% end %>
 
-<% if (current_user.super_admin? || current_user.moderator?) && @user.role == 0 %>
-    <td><%= link_to 'Make Admin', upgrade_path(@user), method: :post %></td>
+	<% if (current_user.super_admin? || current_user.moderator?) && @user.role == "moderator" %>
+	    <%= link_to "Remove Admin", upgrade_path(@user), method: :post %>
 	<% end %>
+	
 
-	<br>
+	<br><br>
 
 <h2>Listings</h2>
 <br>

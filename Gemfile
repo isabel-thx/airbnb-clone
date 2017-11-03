@@ -65,6 +65,12 @@ gem "braintree"
 # If you need a persistent backend,
 # you will need to use an Active Job adapter that has a persistent backend (Sidekiq, Resque, etc).
 gem 'sidekiq'
+# Use 12 factor gem
+# http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/
+gem 'rails_12factor'
+# Use Unicorn = a Rack HTTP server that uses forked processes to handle multiple incoming requests concurrently
+gem 'unicorn'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
