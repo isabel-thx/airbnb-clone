@@ -5,14 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" href="airbnb.ico" type="image/png">
+  
   <title>Isa-airbnb</title>
-  <%= csrf_meta_tag %>
+  
   <!--  integrity=“sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u” crossorigin=“anonymous” -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <%= favicon_link_tag 'airbnb.ico' %>
   
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -22,7 +24,7 @@
   <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
   <!-- Load the Hosted Fields component. -->
   <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
-  
+  <%= csrf_meta_tag %>
 </head>
 <body>
 <!--   <div id="header"> -->
