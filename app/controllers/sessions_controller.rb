@@ -4,6 +4,18 @@ class SessionsController < Clearance::SessionsController
   #   signed_in? == false
   #   redirect_to "/"
   # end
+
+ def create
+    @user = user_from_params
+
+    if @user.save
+      sign_in @user
+      WelcomeJob.perform_later(@user.email)
+      redirect_back_or url_after_create
+    else
+      render template: "users/new"
+    end
+  end
     
   def create_from_omniauth
     auth_hash = request.env["omniauth.auth"]
@@ -18,7 +30,7 @@ class SessionsController < Clearance::SessionsController
       # else: user logs in with OAuth for the first time
       else
         user = User.create_with_auth_and_hash(authentication, auth_hash)
-        WelcomeJob.perform_later(current_user.email)
+        WelcomeJob.perform_later(user.email)
         # you are expected to have a path that leads to a page for editing user details
         @next = edit_user_path(user)
         @notice = "User created. Please confirm or edit details"
