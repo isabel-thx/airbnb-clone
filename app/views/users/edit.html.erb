@@ -1,25 +1,26 @@
+<h2>Edit your profile</h2>
 <br>
-<h3>Edit your profile</h3>
 
 <%= form_for @user do |form| %>
 
 <div class="text-field">
   <%= form.label :first_name %>
-  <%= form.text_field :first_name, type: 'text' %>
+  <input type="text" name="first_name" class="form-control" style="width: 300px;">
 </div>
 
 <div class="text-field">
   <%= form.label :last_name %>
-  <%= form.text_field :last_name, type: 'text' %>
+  <input type="text" name="last_name" class="form-control">
 </div>
 
 <div class="text-field">
   <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
+  <input type="text" name="email" class="form-control">
 </div>
+<br>
 
 <div class="submit-field">
-	<%= form.submit "Update Details" %>
+	<%= form.submit "Update Details", class: 'btn btn-default'%>
 </div>
 
 <% end %>

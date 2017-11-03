@@ -34,7 +34,6 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = current_user.listings.new(listing_params)
-# byebug
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
@@ -91,7 +90,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :street_address, :zipcode, :city, :state, :country, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :max_num_of_guests, :price, :house_rules, :check_in_time, :check_out_time, photos: [])
+      params.require(:listing).permit(:title, :street_address, :zipcode, :city, :state, :country, :description, :property_type, :num_of_rooms, :num_of_bathrooms, :max_num_of_guests, :price, :house_rules, :check_in_time, :check_out_time, photos: [], amenity_list: [])
     end
 
     def allowed?

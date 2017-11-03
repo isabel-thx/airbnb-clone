@@ -4,9 +4,9 @@
       <div class="thumbnail">
         <img style="height: 250px; width: 300px;" src="<%= listing.photos[0] %>" alt="...">
       <div class="caption" style="height: 200px;" >
-        <h3><%= listing.title %></h3>
-        <p><%= listing.description %></p>
-      <p><a href="/listings/<%= listing.id %>" class="btn btn-primary" role="button">Show More</a>
+        <h3><%= listing.title.truncate_words(8) %></h3>
+        <p><%= listing.description.truncate_words(20) %></p>
+      <a href="/listings/<%= listing.id %>" class="btn btn-primary" role="button">Show More</a>
           <!-- <a href="#" class="btn btn-default" role="button">Button</a></p> -->
       </div>
       </div>

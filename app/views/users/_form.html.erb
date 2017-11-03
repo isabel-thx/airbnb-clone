@@ -1,19 +1,19 @@
 <div class="text-field">
   <%= form.label :first_name %>
-  <%= form.text_field :first_name, type: 'text', required: true %>
+  <input type="text" name="user[first_name]" class="form-control" style="width: 300px" required>
 </div>
 
 <div class="text-field">
   <%= form.label :last_name %>
-  <%= form.text_field :last_name, type: 'text', required: true %>
+  <input type="text" name="user[last_name]" class="form-control" required>
 </div>
 
 <div class="text-field">
   <%= form.label :email %>
-  <%= form.text_field :email, type: 'email', required: true %>
+  <input type="text" name="user[email]" class="form-control" required>
 </div>
 
 <div class="password-field">
   <%= form.label :password %>
-  <%= form.password_field :password, required: true %>
+  <input type="password" name="user[password]" class="form-control" required>
 </div>

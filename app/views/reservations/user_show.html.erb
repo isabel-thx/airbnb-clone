@@ -3,24 +3,28 @@
 <br><br>
 
 <p>
-  <strong>Airbnb Owner:</strong>
+  <strong>Airbnb Owner: </strong>
   <%= link_to "#{@listing.user.first_name} #{@listing.user.last_name}", user_path(@listing.user) %>
 </p>
+<br>
 
 <p>
-  <strong>Property:</strong>
+  <strong>Property: </strong>
   <%= link_to @listing.title, listing_path(@listing) %>
 </p>
+<br>
 
 <p>
   <strong>Check-in Date:</strong>
   <%= @reservation.start_date %>
 </p>
+<br>
 
 <p>
   <strong>Check-out Date:</strong>
   <%= @reservation.end_date %>
 </p>
+<br>
 
 <br>
 

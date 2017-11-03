@@ -5,6 +5,8 @@ class Reservation < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :num_of_guests, presence: true, numericality: { greater_than: 0, only_integer: true }
+  
+
   validate :check_overlapping_dates, on: :create
   # without S for custom validation
 
