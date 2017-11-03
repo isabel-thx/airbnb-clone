@@ -15,38 +15,38 @@
 
   <div class="listing-field">
     <%= form.label :property %>
-    <%= form.text_field :title, class: 'form-control' %>
+    <%= form.text_field :title, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :street_address %>
     <!-- <input type="text" name="street_address" class="form-control"> -->
-    <%= form.text_field :street_address, class: 'form-control' %>
+    <%= form.text_field :street_address, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :zipcode %>
-    <%= form.text_field :zipcode, class: 'form-control' %>
+    <%= form.text_field :zipcode, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :city %>
-    <%= form.text_field :city, class: 'form-control' %>
+    <%= form.text_field :city, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :state %>
-    <%= form.text_field :state, class: 'form-control' %>
+    <%= form.text_field :state, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :country %>
-    <select name='listing[country]' class='form-control' placeholder='Where'>
+    <select name='listing[country]' class='form-control' placeholder='Where' style="width: 500px;">
       <option>Afghanistan</option>
         <option>Åland Islands</option>
         <option>Albania</option>
@@ -300,13 +300,13 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control' %>
+    <%= form.text_area :description, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :house_rules %>
-    <%= form.text_area :house_rules, class: 'form-control' %>
+    <%= form.text_area :house_rules, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
@@ -318,7 +318,7 @@
 
   <div class="field">
     <%= form.label :property_type %>
-    <select name='listing[property_type]' class='form-control' placeholder='Where'>
+    <select name='listing[property_type]' class='form-control' placeholder='Where' style="width: 500px">
       <option>Tent</option>
       <option>Codominium</option>
       <option>House</option>
@@ -334,7 +334,7 @@
 
   <div class="field">
     <%= form.label :number_of_rooms %>
-    <select name='listing[num_of_rooms]' class='form-control'>
+    <select name='listing[num_of_rooms]' class='form-control' style="width: 500px">
       <option value="1">1 Room</option>
       <option value="2">2 Rooms</option>
       <option value="3">3 Rooms</option>
@@ -352,7 +352,7 @@
 
   <div class="field">
     <%= form.label :number_of_bathrooms %>
-    <select name='listing[num_of_bathrooms]' class='form-control'>
+    <select name='listing[num_of_bathrooms]' class='form-control' style="width: 500px">
       <option value="1">1 Bathroom</option>
       <option value="2">2 Bathrooms</option>
       <option value="3">3 Bathrooms</option>
@@ -370,7 +370,7 @@
 
   <div class="field">
     <%= form.label :max_number_of_guests %>
-    <select name='listing[max_num_of_guests]' class='form-control'>
+    <select name='listing[max_num_of_guests]' class='form-control' style="width: 500px">
       <option value="1">1 Guest</option>
       <option value="2">2 Guests</option>
       <option value="3">3 Guests</option>
@@ -412,19 +412,19 @@
   <div class="field">
     <%= form.label :price %>
    <!--  <input type="number" name="listing[price]" class="form-control" placeholder="RM / night"> -->
-   <%= form.number_field :price, class: 'form-control', placeholder: "RM / night"%>
+   <%= form.number_field :price, class: 'form-control', placeholder: "RM / night", style:'width: 500px'%>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :check_in_time %>
-    <%= form.text_field :check_in_time, class: 'form-control' %>
+    <%= form.text_field :check_in_time, class: 'form-control', style:'width: 500px' %>
   </div>
   <br>
 
   <div class="field">
     <%= form.label :check_out_time %>
-    <%= form.text_field :check_out_time, class: 'form-control' %>
+    <%= form.text_field :check_out_time, class: 'form-control', style:'width: 500px' %>
   </div>
 
 
