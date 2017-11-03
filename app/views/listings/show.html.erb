@@ -127,7 +127,7 @@ This is a verified property!
 <br>
 
 
-<% if @listing.user != current_user || current_user.customer? %>
+<% if @listing.user != current_user %>
 <!-- <button><%#= link_to 'BOOK NOW', new_listing_reservation_path(@listing) %></button> -->
 <br>
 <a href="/listings/<%= @listing.id %>/reservations/new" class="btn btn-primary" role="button">BOOK NOW</a>
@@ -149,8 +149,9 @@ This is a verified property!
   <td><%= link_to 'Edit', edit_listing_path(@listing) %></td> |
   <td><%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %> |</td>
 <% end %>
-
 <% end %>
+
+
 
 <%= link_to 'Back', listings_path %>
 

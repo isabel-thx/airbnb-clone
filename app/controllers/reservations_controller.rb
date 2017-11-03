@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
   	@reservation.user_id = current_user.id
   	@reservation.listing_id = @listing.id
 
-    @host = "isabelthx94@gmail.com" #@listing.user.email
+    @host = @listing.user.email
     #@guest = @reservation.user
 
   	respond_to do |format|

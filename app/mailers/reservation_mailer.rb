@@ -4,7 +4,7 @@ class ReservationMailer < ApplicationMailer
 		@guest = User.find_by(email: guest_email)
 		@host = User.find_by(email: host_email)
 
-    @url  = 'http://localhost:3000/'
+    @url  = 'http://isa-airbnb.herokuapp.com'
     mail(to: host_email, subject: 'Isa-airbnb: You Have a New Booking!')
   end
 
