@@ -13,8 +13,6 @@
 
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "bootstrap-datetimepicker";
 
 
@@ -178,10 +176,27 @@ body {
   background: none;
 }
 
+/* .new_listing {
+  border-radius: 8px;
+  border-color: light grey;
+  width: 300px;
+} */
 
+form {
+  display: table;
+}
 
+ p {
+  display: table-row;
+}
 
+label {
+  display: table-cell;
+}
 
+input {
+  display: table-cell;
+}
 
 
 

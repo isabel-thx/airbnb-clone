@@ -47,67 +47,87 @@ This is a verified property!
 <br><br>
 
 <p>
-  <strong>Owner:</strong>
+  <strong>Owner: </strong>
   <%= link_to "#{@listing.user.first_name} #{@listing.user.last_name}", user_path(@listing.user) %>
 </p>
+<br>
 
 <p>
   <strong>Property:</strong>
   <%= @listing.title %>
 </p>
+<br>
 
 <p>
   <strong>Address:</strong>
   <%= @listing.street_address %>, <%= @listing.city %> <%= @listing.zipcode %> <%= @listing.state %>, <%= @listing.country %>
 </p>
+<br>
 
 <p>
   <strong>Description:</strong>
   <%= @listing.description %>
 </p>
+<br>
 
 <p>
   <strong>Property type:</strong>
   <%= @listing.property_type %>
 </p>
+<br>
 
 <p>
   <strong>Number of rooms:</strong>
   <%= @listing.num_of_rooms %>
 </p>
+<br>
 
 <p>
   <strong>Number of bathrooms:</strong>
   <%= @listing.num_of_bathrooms %>
 </p>
+<br>
 
 <p>
   <strong>Maximum number of guests:</strong>
   <%= @listing.max_num_of_guests %>
 </p>
+<br>
+
+<% if @listing.amenity_list != [] %>
+<p>
+  <strong>Amenities:</strong>
+  <%= @listing.amenity_list.join(", ").to_s %>
+</p>
+<br>
+<% end %>
 
 <p>
   <strong>Price:</strong>
   RM<%= @listing.price %>/night
 </p>
+<br>
 
 <p>
   <strong>House rules:</strong>
   <%= @listing.house_rules %>
 </p>
+<br>
 
 <p>
   <strong>Check-in time:</strong>
   <%= @listing.check_in_time %>
 </p>
+<br>
 
 <p>
   <strong>Check-out time:</strong>
   <%= @listing.check_out_time %>
 </p>
+<br>
 
 
-<% if @listing.user != current_user && current_user.customer? %>
+<% if @listing.user != current_user || current_user.customer? %>
 <!-- <button><%#= link_to 'BOOK NOW', new_listing_reservation_path(@listing) %></button> -->
 <br>
 <a href="/listings/<%= @listing.id %>/reservations/new" class="btn btn-primary" role="button">BOOK NOW</a>
@@ -115,7 +135,7 @@ This is a verified property!
 
 <br><br>
 
-
+<% if signed_in? %>
 <% if @listing.user == current_user || current_user.super_admin? || current_user.moderator? %>
   <td><%= link_to 'Listing Reservations', listing_reservations_path(@listing) %></td> <br>
 <% end %>
@@ -128,6 +148,8 @@ This is a verified property!
 <% if @listing.user == current_user && current_user.customer? %>
   <td><%= link_to 'Edit', edit_listing_path(@listing) %></td> |
   <td><%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %> |</td>
+<% end %>
+
 <% end %>
 
 <%= link_to 'Back', listings_path %>

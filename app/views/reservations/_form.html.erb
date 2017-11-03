@@ -4,18 +4,31 @@
 <!-- same as form_for [@reservation, @listing] -->
 
   <div class="field">
-    <%= form.label :number_of_guests %>:<br>
-    <%= form.number_field :num_of_guests, id: :reservation_guests %>
+    <%= form.label :number_of_guests %><br>
+    <select name='reservation[num_of_guests]' class='form-control' style="width: 300px">
+      <option value="1">1 Guest</option>
+      <option value="2">2 Guests</option>
+      <option value="3">3 Guests</option>
+      <option value="4">4 Guests</option>
+      <option value="5">5 Guests</option>
+      <option value="6">6 Guests</option>
+      <option value="7">7 Guests</option>
+      <option value="8">8 Guests</option>
+      <option value="9">9 Guests</option>
+      <option value="10">10 Guests</option>
+      <option value="11">11+ Guests</option>
+  </select>
   </div>
+  <br><br>
 
   <div class="container">
   <div class="field">
-    <%= form.label :check_in_date %><%# form.field :start_date %>
+    <%= form.label :check_in_date %><br><%# form.field :start_date %>
      <div class="container">
       <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
+                <div class='input-group date' id='datetimepicker3' style="width: 300px">
                     <%= form.text_field :start_date, class: 'form-control' %>
                     <!-- <input type='text' class="form-control" /> -->
                     <span class="input-group-addon">
@@ -37,14 +50,16 @@
         </script>
     </div>
   </div>
+  <br>
+
 
   <div class="field">
-    <%= form.label :check_out_date %><%# form.field :end_date %>
+    <%= form.label :check_out_date %><br><%# form.field :end_date %>
      <div class="container">
       <div class="row">
         <div class='col-sm-6'>
             <div class="form-group">
-                <div class='input-group date' id='datetimepicker4'>
+                <div class='input-group date' id='datetimepicker4' style="width: 300px">
                   <%= form.text_field :end_date, class: 'form-control' %>
                     <!-- <input type='text' class="form-control" /> -->
                     <span class="input-group-addon">
@@ -64,6 +79,7 @@
       </script>
     </div>
   </div>
+  <br>
 
   <script type="text/javascript">
     $(function () {
@@ -83,7 +99,8 @@
 </div>
 
   <div class="actions">
-    <%= form.submit "Book These Dates" %>
+    <%= form.submit "Book These Dates", class: 'btn btn-default' %>
   </div>
-<% end %>
 
+<% end %>
+<br>

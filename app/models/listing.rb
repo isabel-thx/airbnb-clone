@@ -3,6 +3,18 @@ class Listing < ApplicationRecord
   has_many :reservations, dependent: :destroy
   mount_uploaders :photos, PhotoUploader
   
+  validates :title, presence: true
+  validates :street_address, presence: true
+  validates :zipcode, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :country, presence: true
+  validates :description, presence: true
+  validates :house_rules, presence: true
+  validates :property_type, presence: true
+  validates :check_in_time, presence: true
+  validates :check_out_time, presence: true
+
   validates :num_of_rooms, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :num_of_bathrooms, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :price, presence: true, numericality: { greater_than: 0, only_integer: true }
