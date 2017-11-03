@@ -23,8 +23,11 @@ Rails.application.routes.draw do
   # same as
   # get '/listings/:id/verify' => 'listings#verify', as: :verify_listing
 
-  # change user role
+  # upgrade user role
   post '/users/:id/upgrade' => "users#upgrade", as: "upgrade"
+
+  # downgrade user role
+  post '/users/:id/downgrade' => "users#downgrade", as: "downgrade"
 
   # user reservations
   get '/users/:id/reservations' => "reservations#user_index", as: "user_reservations"

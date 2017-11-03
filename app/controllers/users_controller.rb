@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def downgrade
+    @user.customer!
+    redirect_to @user
+  end
+
   def index
     @users = User.all
   end

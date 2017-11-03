@@ -28,7 +28,7 @@
 	<% end %>
 
 	<% if (current_user.super_admin? || current_user.moderator?) && @user.role == "moderator" %>
-	    <%= link_to "Remove Admin", upgrade_path(@user), method: :post %>
+	    <%= link_to "Remove Admin", downgrade_path(@user), method: :post %>
 	<% end %>
 	
 
