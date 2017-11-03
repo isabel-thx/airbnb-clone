@@ -18,12 +18,14 @@ class SessionsController < Clearance::SessionsController
       # else: user logs in with OAuth for the first time
       else
         user = User.create_with_auth_and_hash(authentication, auth_hash)
+        WelcomeJob.perform_later(current_user.email)
         # you are expected to have a path that leads to a page for editing user details
         @next = edit_user_path(user)
         @notice = "User created. Please confirm or edit details"
       end
 
     sign_in(user)
+
     redirect_to @next, :notice => @notice
   end
 
