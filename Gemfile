@@ -65,11 +65,6 @@ gem "braintree"
 # If you need a persistent backend,
 # you will need to use an Active Job adapter that has a persistent backend (Sidekiq, Resque, etc).
 gem 'sidekiq'
-# Use 12 factor gem
-# http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/
-gem 'rails_12factor'
-# Use Unicorn = a Rack HTTP server that uses forked processes to handle multiple incoming requests concurrently
-gem 'unicorn'
 
 
 # Use Capistrano for deployment
@@ -90,6 +85,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  # gem 'pg', '~> 0.15'
+  # Use 12 factor gem
+  # http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/
+  gem 'rails_12factor', '0.0.2'
+  # Use Unicorn = a Rack HTTP server that uses forked processes to handle multiple incoming requests concurrently
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
