@@ -9,8 +9,8 @@ class SessionsController < Clearance::SessionsController
     @user = user_from_params
 
     if @user.save
-      sign_in @user
       WelcomeJob.perform_later(@user.email)
+      sign_in @user
       redirect_back_or url_after_create
     else
       render template: "users/new"

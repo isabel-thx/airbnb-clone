@@ -15,7 +15,7 @@
 	Email: <%= @user.email %>
 	<br>
 
-
+<% if signed_in? %>
 	<% if @user == current_user %>
 		<div>
 			<%= link_to "Edit Profile", edit_user_path(current_user) %>
@@ -30,6 +30,7 @@
 	<% if (current_user.super_admin? || current_user.moderator?) && @user.role == "moderator" %>
 	    <%= link_to "Remove Admin", downgrade_path(@user), method: :post %>
 	<% end %>
+<% end %>
 	
 
 	<br><br>
